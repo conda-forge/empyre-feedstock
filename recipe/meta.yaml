@@ -12,18 +12,18 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools
   run:
     - matplotlib-base >=3.2
     - numpy >=1.17
     - pillow
-    - python >=3.6
+    - python >={{ python_min }}
     - scikit-image
     - scipy
     - tqdm
@@ -43,6 +43,7 @@ test:
     - pytest-cov
     - pytest-flake8
     - pytest-runner
+    - python {{ python_min }}
 
 about:
   home: https://iffgit.fz-juelich.de/empyre/empyre
