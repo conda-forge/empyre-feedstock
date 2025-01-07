@@ -1,29 +1,29 @@
 {% set name = "empyre" %}
-{% set version = "0.3.2" %}
+{% set version = "0.3.3" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/ae/a6/057ff3e951365d86d83f63220d4f8893b7970df87f813426c791d2352839/empyre-0.3.2.tar.gz
-  sha256: 20ad0a16de0c2d3539c68b286a417721d3230da8f7789cd8804929fddc06df5d
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/empyre-{{ version }}.tar.gz
+  sha256: 89b9c04cc4225ff4f61b25f2ad8aa725f7cc3aaec40f3520ab5351a194121c3e
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
-    - pip
     - python {{ python_min }}
-    - setuptools
+    - hatchling
+    - pip
   run:
+    - python >={{ python_min }}
     - matplotlib-base >=3.2
     - numpy >=1.17
     - pillow
-    - python >={{ python_min }}
     - scikit-image
     - scipy
     - tqdm
