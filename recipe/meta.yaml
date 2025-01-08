@@ -1,29 +1,29 @@
 {% set name = "empyre" %}
-{% set version = "0.3.2" %}
+{% set version = "0.3.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/ae/a6/057ff3e951365d86d83f63220d4f8893b7970df87f813426c791d2352839/empyre-0.3.2.tar.gz
-  sha256: 20ad0a16de0c2d3539c68b286a417721d3230da8f7789cd8804929fddc06df5d
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/empyre-{{ version }}.tar.gz
+  sha256: 006317355dc65d7bc4760a5e661564bad6aacdc792a6ccce3af3173488f18fe9
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
+    - python {{ python_min }}
+    - hatchling
     - pip
-    - python >=3.6
-    - setuptools
   run:
+    - python >={{ python_min }}
     - matplotlib-base >=3.2
     - numpy >=1.17
     - pillow
-    - python >=3.6
     - scikit-image
     - scipy
     - tqdm
@@ -43,6 +43,7 @@ test:
     - pytest-cov
     - pytest-flake8
     - pytest-runner
+    - python {{ python_min }}
 
 about:
   home: https://iffgit.fz-juelich.de/empyre/empyre
