@@ -1,5 +1,5 @@
 {% set name = "empyre" %}
-{% set version = "0.3.4" %}
+{% set version = "0.3.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/empyre-{{ version }}.tar.gz
-  sha256: 006317355dc65d7bc4760a5e661564bad6aacdc792a6ccce3af3173488f18fe9
+  sha256: 3370912d0f46949a66a375da2bb40b2f5fb73e5e504d4c3b6e549df11620e809
 
 build:
   noarch: python
